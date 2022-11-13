@@ -43,4 +43,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/helm/chart-testing/v3 v3.7.1 => github.com/andylibrian/chart-testing/v3 v3.0.0-20221108151457-3301d08e7cae
+replace github.com/helm/chart-testing/v3 v3.7.1 => github.com/andylibrian/chart-testing/v3 v3.0.0-20221108151457-b1f77776e553515bce84e3149d8985df0a86f228
