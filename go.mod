@@ -42,3 +42,5 @@ require (
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+replace github.com/helm/chart-testing/v3 v3.7.1 => github.com/andylibrian/chart-testing/v3 v3.0.0-20221108151457-3301d08e7cae
