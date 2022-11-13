@@ -20,6 +20,7 @@ import (
 	"io"
 	"os"
 	"os/exec"
+	"runtime/debug"
 	"strings"
 
 	"github.com/helm/chart-testing/v3/pkg/util"
@@ -50,9 +51,11 @@ func (p ProcessExecutor) RunProcessInDirAndCaptureOutput(workingDirectory string
 	}
 
 	cmd.Dir = workingDirectory
+	cmd.Env = append(cmd.Env, "GIT_TRACE=1")
 	bytes, err := cmd.CombinedOutput()
 
 	if err != nil {
+		debug.PrintStack()
 		return "", fmt.Errorf("1) failed running process: %s, %w", cmd.String(), err)
 	}
 	return strings.TrimSpace(string(bytes)), nil
