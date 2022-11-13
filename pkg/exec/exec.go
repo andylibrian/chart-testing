@@ -53,7 +53,7 @@ func (p ProcessExecutor) RunProcessInDirAndCaptureOutput(workingDirectory string
 	bytes, err := cmd.CombinedOutput()
 
 	if err != nil {
-		return "", fmt.Errorf("failed running process: %w", err)
+		return "", fmt.Errorf("1) failed running process: %s, %w", cmd.String(), err)
 	}
 	return strings.TrimSpace(string(bytes)), nil
 }
@@ -68,7 +68,7 @@ func (p ProcessExecutor) RunProcessInDirAndCaptureStdout(workingDirectory string
 	bytes, err := cmd.Output()
 
 	if err != nil {
-		return "", fmt.Errorf("failed running process: %w", err)
+		return "", fmt.Errorf("2) failed running process: %s, %w", cmd.String(), err)
 	}
 	return strings.TrimSpace(string(bytes)), nil
 }
@@ -98,7 +98,7 @@ func (p ProcessExecutor) RunProcess(executable string, execArgs ...interface{}) 
 
 	err = cmd.Start()
 	if err != nil {
-		return fmt.Errorf("failed running process: %w", err)
+		return fmt.Errorf("3) failed running process: %s, %w", cmd.String(), err)
 	}
 
 	err = cmd.Wait()
